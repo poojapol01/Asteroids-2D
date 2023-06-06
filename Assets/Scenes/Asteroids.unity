@@ -502,6 +502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrustSpeed: 1
   turnSpeed: 0.2
+  bulletPrefab: {fileID: -6636121697399115594, guid: 6bbce8451ffa0b941a132750c0577b29, type: 3}
 --- !u!1 &2082078212
 GameObject:
   m_ObjectHideFlags: 0

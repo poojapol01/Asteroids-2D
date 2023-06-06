@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private float _turnDirection;
     public float thrustSpeed = 1.0f;
     public float turnSpeed = 1.0f;
+    public Bullet bulletPrefab;
 
     private void Awake()
     {
@@ -29,6 +30,11 @@ public class Player : MonoBehaviour
         {
             _turnDirection = 0.0f;
         }
+
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
     }
 
     private void FixedUpdate()
@@ -41,5 +47,11 @@ public class Player : MonoBehaviour
         {
             rg.AddTorque(_turnDirection * turnSpeed);
         }
+    }
+
+    private void Shoot()
+    {
+        Bullet bullet = Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
+        bullet.Project(this.transform.up);
     }
 }
