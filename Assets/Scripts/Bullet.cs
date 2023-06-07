@@ -17,4 +17,8 @@ public class Bullet : MonoBehaviour
 
         Destroy(this.gameObject, maxBulletLife);
     }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(this.gameObject);
+    }
 }
