@@ -146,3 +146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b551284b07e6ecd4ca6fad176f92a36e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: bc0ebac591d0ccf4f9f124ee6ecf998e, type: 3}
+  - {fileID: 21300000, guid: 5a1917322cb295449bf7552a48bba38e, type: 3}
+  - {fileID: 21300000, guid: 858c9cd8f5aa40c4eb8f181d3a3d0e50, type: 3}
+  - {fileID: 21300000, guid: b3b84f8ff9ae1104cbcc0c1a9308590c, type: 3}
+  size: 1
+  minSizeAsteroid: 0.5
+  maxSizeAsteroid: 1.5
+  speed: 50
