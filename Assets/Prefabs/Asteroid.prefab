@@ -154,4 +154,4 @@ MonoBehaviour:
   size: 1
   minSizeAsteroid: 0.5
   maxSizeAsteroid: 1.5
-  speed: 50
+  speed: 10
