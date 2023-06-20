@@ -55,7 +55,7 @@ public class Asteroid : MonoBehaviour
         position += Random.insideUnitCircle * 0.5f;
         Asteroid half = Instantiate(this, position, this.transform.rotation);
 
-        half.size = this.size + 0.5f;
+        half.size = this.size * 0.5f;
         half.SetTrajectory(Random.insideUnitCircle.normalized);
     }
 }
