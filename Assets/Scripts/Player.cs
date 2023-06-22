@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rg;
+    Rigidbody2D _rg;
     private bool _thrusting;
     private float _turnDirection;
     public float thrustSpeed = 1.0f;
@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        rg = GetComponent<Rigidbody2D>();
+        _rg = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
@@ -41,11 +41,11 @@ public class Player : MonoBehaviour
     {
         if (_thrusting)
         {
-            rg.AddForce(this.transform.up * thrustSpeed);
+            _rg.AddForce(this.transform.up * thrustSpeed);
         }
         else if(_turnDirection != 0.0f)
         {
-            rg.AddTorque(_turnDirection * turnSpeed);
+            _rg.AddTorque(_turnDirection * turnSpeed);
         }
     }
 
@@ -53,5 +53,18 @@ public class Player : MonoBehaviour
     {
         Bullet bullet = Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
         bullet.Project(this.transform.up);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Asteroid")
+        {
+            Debug.Log("Collision");
+            _rg.velocity = Vector3.zero;
+            _rg.angularVelocity = 0.0f;
+
+            this.gameObject.SetActive(false);
+            FindObjectOfType<GameManager>().PlayerDied();
+        }
     }
 }
