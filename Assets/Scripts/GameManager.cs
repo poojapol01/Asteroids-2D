@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     private int _lives = 3;
     private float respawnTime = 3.0f;
+    private float respawnInvunerabilityTime = 3.0f;
 
     public void PlayerDied()
     {
@@ -25,7 +26,15 @@ public class GameManager : MonoBehaviour
     private void Respawn()
     {
         this.player.transform.position = Vector3.zero;
+        this.player.gameObject.layer = LayerMask.NameToLayer("Ignore Collisions");
         this.player.gameObject.SetActive(true);
+
+        Invoke(nameof(TurnOnCollisions), respawnInvunerabilityTime);
+    }
+
+    private void TurnOnCollisions()
+    {
+        this.player.gameObject.layer = LayerMask.NameToLayer("Player");
     }
     private void GameOver()
     {

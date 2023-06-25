@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     {
         _rg = GetComponent<Rigidbody2D>();
     }
+
     private void Update()
     {
 
