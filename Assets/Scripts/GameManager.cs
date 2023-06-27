@@ -10,11 +10,23 @@ public class GameManager : MonoBehaviour
     private int _lives = 3;
     private float respawnTime = 3.0f;
     private float respawnInvunerabilityTime = 3.0f;
+    public int score = 0;
 
     public void AsteroidDestroyed(Asteroid asteroid)
     {
         this.explosion.transform.position = asteroid.transform.position;
         this.explosion.Play();
+
+        if(asteroid.size < 0.75f)
+        {
+            score += 100;
+        }else if(asteroid.size < 1.2f)
+        {
+            score += 50;
+        }else if(asteroid.size < 1.5f)
+        {
+            score += 25;
+        }
     }
 
     public void PlayerDied()
