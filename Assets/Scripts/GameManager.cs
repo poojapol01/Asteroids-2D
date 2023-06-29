@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class GameManager : MonoBehaviour
     private float respawnTime = 3.0f;
     private float respawnInvunerabilityTime = 3.0f;
     public int score = 0;
+    public Canvas gameOverCanvas;
+
+    private void Awake()
+    {
+        //gameOverCanvas.enabled = true;
+        gameOverCanvas.gameObject.GetComponent<Canvas>().enabled = false;
+    }
 
     public void AsteroidDestroyed(Asteroid asteroid)
     {
@@ -61,5 +69,8 @@ public class GameManager : MonoBehaviour
     {
         //TODO
         Debug.Log("Game Over");
+        gameOverCanvas.gameObject.GetComponent<Canvas>().enabled = true;
+        gameOverCanvas.gameObject.transform.GetChild(2).GetComponent<Text>().text = score.ToString();
+        //gameOverCanvas.enabled = true;
     }
 }
